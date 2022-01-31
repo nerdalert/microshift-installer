@@ -7,6 +7,14 @@ This is an automated installation for [Microshift](https://github.com/redhat-et/
 
 ### Installation
 
+- Run the following:
+
+```shell
+curl -sfL https://raw.githubusercontent.com/nerdalert/microshift-installer/main/microshift-install.sh |  sh -s -
+```
+
+- Alternatively, pull the repo and run the script:
+
 ```shell
 git clone https://github.com/nerdalert/microshift-installer.git
 cd microshift-installer
