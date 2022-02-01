@@ -1,3 +1,5 @@
+# Install script for https://github.com/redhat-et/microshift
+# Can be installed using: curl -sfL https://raw.githubusercontent.com/nerdalert/microshift-installer/main/microshift-install.sh |  sh -s -
 #!/bin/sh
 set -e
 set -o noglob
