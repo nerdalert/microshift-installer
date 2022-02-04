@@ -65,15 +65,20 @@ while ! sudo crictl ps | grep -q 'flannel'; do
   sleep 1
 done
 
+# check for kubectl
+if ! command -v kubectl &> /dev/null
+then
+    echo -e "Warning: the kubectl binary was not found, install it with:\n"
+    echo "curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    echo "chmod +x ./kubectl"
+    echo -e "sudo mv ./kubectl /usr/local/bin/kubectl\n"
+fi
+
 echo "- Storing kubeconfig in ~/.kube/config"
 mkdir ~/.kube &>/dev/null
 sudo cat /var/lib/microshift/resources/kubeadmin/kubeconfig >~/.kube/config
 echo -e "\xE2\x9C\x94 Done"
 echo "pods are initiating may take a couple of minutes depending on resources.."
-
-export KUBECONFIG=~/.kube/config
-kubectl wait --for=condition=Ready pods --all --all-namespaces --timeout=300s
-
 echo "- Installation complete, view the pods with the following:"
 echo "cmd -> export KUBECONFIG=~/.kube/config"
 echo -e "cmd -> kubectl get pods --all-namespaces -o wide\n"
