@@ -57,9 +57,7 @@ done
 
 cricount=1
 while ! sudo crictl ps | grep -q 'flannel'; do
-  echo "sleeping"
   cricount=$((cricount + 1))
-  echo $cricount
   if [ $cricount -gt 180 ]; then
     echo "timed out waiting on cri-o pods"
     break
