@@ -51,6 +51,11 @@ wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/cri
 sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
 rm -f crictl-$VERSION-linux-amd64.tar.gz
 
+echo "Installing Kind"
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
 # echo "Installing Docker and Podman"
 # sudo dnf -y install dnf-plugins-core
 # sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
