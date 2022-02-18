@@ -11,9 +11,13 @@ set -o noglob
 # sudo dnf -y install snapd
 # sudo systemctl enable --now snapd.socket
 
-# Fedora
+# Fedora Base Apps
 echo "Installing Apps"
 sudo dnf -y install vim wget snapd git python3-pip tcpdump net-tools make dnf-plugins-core autofs vim curl wget snapd kernel-modules squashfuse upx unzip nc bind-utils telnet nmap iperf3 dbus-tools
+
+# Fedora Dev Tools
+# echo "Installing Development Tools and Libraries"
+# sudo dnf groupinstall "Development Tools" "Development Libraries"
 
 echo "Installing yq"
 sudo snap install yq || > /dev/null
