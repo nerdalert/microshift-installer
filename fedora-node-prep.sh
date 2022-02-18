@@ -5,13 +5,13 @@ set -o noglob
 
 
 # CentOS
-sudo dnf -y install epel-release
-sudo dnf -y install snapd
-sudo systemctl enable --now snapd.socket
+# sudo dnf -y install epel-release
+# sudo dnf -y install snapd
+# sudo systemctl enable --now snapd.socket
 
 # Fedora
 echo "Installing Apps"
-sudo dnf -y install vim wget snapd git python3-pip tcpdump net-tools make autofs vim curl wget snapd kernel-modules squashfuse upx unzip nc kernel-modules bind-utils telnet nmap iperf3
+sudo dnf -y install vim wget snapd git python3-pip tcpdump net-tools make dnf-plugins-core autofs vim curl wget snapd kernel-modules squashfuse upx unzip nc bind-utils telnet nmap iperf3 dbus-tools
 
 echo "Installing yq"
 sudo snap install yq
@@ -20,10 +20,9 @@ echo "Installing yq retry”
 sudo snap install yq
 
 #echo "Installing GO"
-cd /usr/local
-sudo wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
-sudo tar -xvzf go1.17.7.linux-amd64.tar.gz go
-cd ~/
+wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go || > /dev/null
+sudo tar -C /usr/local -xzf go1.17.7.linux-amd64.tar.gz
 
 echo "Installing Kubectl"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -52,8 +51,19 @@ rm -f crictl-$VERSION-linux-amd64.tar.gz
 
 # echo "Installing Docker"
 # sudo dnf -y install dnf-plugins-core
-# sudo dnf -y install docker-ce docker-ce-cli containerd.io
+# sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+# sudo dnf install docker-ce docker-ce-cli containerd.io
+# sudo systemctl start docker
+# sudo systemctl enable docker
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
 
 echo "Deleting /etc/machine-id"
 sudo rm /etc/machine-id
 sudo dbus-uuidgen --ensure=/etc/machine-id
+
+echo "Change your IP with: "
+echo "nmcli con show -a "
+echo "sudo nmcli connection modify d313821d-3dd0-3298-a117-0d8f1a7ee609 IPv4.address 192.168.1.93/24"
+
+echo "sudo hostnamectl set-hostname"
