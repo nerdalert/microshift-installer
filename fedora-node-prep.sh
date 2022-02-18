@@ -1,4 +1,6 @@
 # prep a base Fedora node to deploy microshift or k8s on for a dev environment
+# run with: 
+# curl -sfL https://raw.githubusercontent.com/nerdalert/microshift-installer/main/fedora-node-prep.sh |  sh -s -
 #!/bin/sh
 set -e 
 set -o noglob 
@@ -14,10 +16,10 @@ echo "Installing Apps"
 sudo dnf -y install vim wget snapd git python3-pip tcpdump net-tools make dnf-plugins-core autofs vim curl wget snapd kernel-modules squashfuse upx unzip nc bind-utils telnet nmap iperf3 dbus-tools
 
 echo "Installing yq"
-sudo snap install yq
+sudo snap install yq || > /dev/null
 sleep 5
 echo "Installing yq retry”
-sudo snap install yq
+sudo snap install yq || > /dev/null
 
 #echo "Installing GO"
 wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
