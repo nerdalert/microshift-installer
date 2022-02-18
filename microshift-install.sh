@@ -74,13 +74,14 @@ then
     echo -e "sudo mv ./kubectl /usr/local/bin/kubectl\n"
 fi
 
-echo "- Storing kubeconfig in ~/.kube/config"
-mkdir ~/.kube &>/dev/null
-sudo cat /var/lib/microshift/resources/kubeadmin/kubeconfig >~/.kube/config
-echo -e "\xE2\x9C\x94 Done"
+
 echo "pods are initiating may take a couple of minutes depending on resources.."
 echo "- Installation complete, view the pods with the following:"
-echo "cmd -> export KUBECONFIG=~/.kube/config"
+echo "########################################################################"
+echo "mkdir ~/.kube"
+echo "sudo cat /var/lib/microshift/resources/kubeadmin/kubeconfig > ~/.kube/config"
+echo "export KUBECONFIG=~/.kube/config"
+echo "########################################################################"
 echo -e "cmd -> kubectl get pods --all-namespaces -o wide\n"
 echo "- Once all of the microshift pods are up and running, test the deployment with:"
 echo -e "cmd -> kubectl apply -f https://k8s.io/examples/application/shell-demo.yaml  \n"
