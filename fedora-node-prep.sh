@@ -51,7 +51,7 @@ wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/cri
 sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
 rm -f crictl-$VERSION-linux-amd64.tar.gz
 
-# echo "Installing Docker"
+# echo "Installing Docker and Podman"
 # sudo dnf -y install dnf-plugins-core
 # sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 # sudo dnf install docker-ce docker-ce-cli containerd.io
@@ -59,6 +59,7 @@ rm -f crictl-$VERSION-linux-amd64.tar.gz
 # sudo systemctl enable docker
 # sudo groupadd docker
 # sudo usermod -aG docker $USER
+# sudo dnf -y install podman
 
 echo "Deleting /etc/machine-id"
 sudo rm /etc/machine-id
