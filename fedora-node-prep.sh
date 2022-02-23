@@ -19,11 +19,11 @@ sudo dnf -y install vim wget snapd git python3-pip tcpdump net-tools make dnf-pl
 # echo "Installing Development Tools and Libraries"
 # sudo dnf groupinstall "Development Tools" "Development Libraries"
 
-echo "Installing yq"
-sudo snap install yq || > /dev/null
-sleep 5
-echo "Installing yq retry”
-sudo snap install yq || > /dev/null
+#echo "Installing yq"
+#sudo snap install yq || > /dev/null
+#sleep 5
+#echo "Installing yq retry”
+#sudo snap install yq || > /dev/null
 
 #echo "Installing GO"
 wget https://go.dev/dl/go1.17.7.linux-amd64.tar.gz
