@@ -3,7 +3,7 @@
 # curl -sfL https://raw.githubusercontent.com/nerdalert/microshift-installer/main/fedora-node-prep.sh |  sh -s -
 #!/bin/bash
 set -o noglob 
-
+set +e
 
 # CentOS
 # sudo dnf -y install epel-release
