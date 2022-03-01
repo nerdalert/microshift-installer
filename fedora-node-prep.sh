@@ -2,7 +2,6 @@
 # run with: 
 # curl -sfL https://raw.githubusercontent.com/nerdalert/microshift-installer/main/fedora-node-prep.sh |  sh -s -
 #!/bin/sh
-set -e 
 set -o noglob 
 
 
