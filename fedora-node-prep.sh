@@ -1,7 +1,7 @@
 # prep a base Fedora node to deploy microshift or k8s on for a dev environment
 # run with: 
 # curl -sfL https://raw.githubusercontent.com/nerdalert/microshift-installer/main/fedora-node-prep.sh |  sh -s -
-#!/bin/sh
+#!/bin/bash
 set -o noglob 
 
 
