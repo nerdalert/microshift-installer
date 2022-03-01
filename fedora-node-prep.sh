@@ -36,9 +36,9 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
 echo "Stopping Firewalld"
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
-sudo systemctl status firewalld
+sudo systemctl stop firewalld  || > /dev/null
+sudo systemctl disable firewalld  || > /dev/null
+sudo systemctl status firewalld  || > /dev/null
 
 echo "Disabling SELinux"
 sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
